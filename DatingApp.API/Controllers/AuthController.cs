@@ -27,7 +27,6 @@ namespace DatingApp.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(UserForRegisterDto userForRegisterDto)
         {
-
             userForRegisterDto.Username = userForRegisterDto.Username.ToLower();
 
             if (await _repo.UserExists(userForRegisterDto.Username))
@@ -50,7 +49,7 @@ namespace DatingApp.API.Controllers
 
             if (userFromRepo == null)
                 return Unauthorized();
-
+                
             var claims = new[]
             {
                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
